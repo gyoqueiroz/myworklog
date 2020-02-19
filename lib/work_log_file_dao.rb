@@ -1,12 +1,12 @@
 require 'pstore'
 require 'fileutils'
 
-DB_FILE_NAME = 'myworklog.pstore'
-DB_FOLDER = '.myworklog'
-HOME_FOLDER = File.expand_path('~')
-FULL_DB_FILE_PATH = "#{HOME_FOLDER}/#{DB_FOLDER}/#{DB_FILE_NAME}"
-
 class WorkLogFileDao
+    DB_FILE_NAME = 'myworklog.pstore'
+    DB_FOLDER = '.myworklog'
+    HOME_FOLDER = File.expand_path('~')
+    FULL_DB_FILE_PATH = "#{HOME_FOLDER}/#{DB_FOLDER}/#{DB_FILE_NAME}"
+    
     def initialize
         db_folder_full_path = "#{HOME_FOLDER}/#{DB_FOLDER}"
         FileUtils.mkdir_p(db_folder_full_path) unless File.directory?(db_folder_full_path)
