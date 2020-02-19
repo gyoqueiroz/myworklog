@@ -9,5 +9,5 @@ Clone the project, build the gem `gem build myworklog.gemspec` and install it `g
 ## Running
 
 Open a terminal and type `myworklog` it will print all the available options.
-Please notice that the pstore database is created your home folder, under `.myworklog` folder
+Please notice that the pstore database is created in your home folder, under `.myworklog` directory.
 
