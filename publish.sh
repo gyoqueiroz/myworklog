@@ -1,1 +1,1 @@
-gem push myworklog-*.gem
+./build.sh && gem push myworklog-*.gem
