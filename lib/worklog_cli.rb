@@ -5,10 +5,11 @@ require_relative 'work_log_controller'
 DATE_FORMAT = 'DD/MM/YYYY'
 
 class WorkLogCli < Thor
-    desc 'add [DATE] [DESCRIPTION]', "adds a new work log. Use 'today' as DATE for current date or 'yesterday'. Date format #{DATE_FORMAT}"
-
-    def add(date, description)
+    desc 'add [DESCRIPTION]', "Adds a new work log with today's date as default. Use -d flag to specify a different date (e.g. myworklog add -d 10/10/2010 'I worked'). Date format #{DATE_FORMAT}"
+    options :d => :string
+    def add(description)
         begin
+            date = options[:d] ? options[:d] : 'today'
             WorkLogController.new.add_work_log(date, description)
         rescue ArgumentError => msg
             puts msg
@@ -27,7 +28,7 @@ class WorkLogCli < Thor
         print(WorkLogController.new.list_all)
     end
 
-    desc 'delete [ID]', 'Deletes the work log by ID. Use list command before to retrieve the ID'
+    desc 'delete [ID]', 'Deletes the work log by ID. You can use the `list` command to retrieve the ID'
 
     def delete(id)
         begin
