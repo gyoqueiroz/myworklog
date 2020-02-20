@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name      = 'myworklog'
-    s.version   = '1.0.6'
+    s.version   = '1.0.7'
     s.platform  = Gem::Platform::RUBY
     s.summary   = 'My Work Log'
     s.description = 'Log your work from cmd and keep track of what you have done. Just in case your boss asks'
