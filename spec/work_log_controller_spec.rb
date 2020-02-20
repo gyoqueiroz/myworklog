@@ -116,4 +116,26 @@ describe WorkLogController do
             end
         end
     end
+
+    context 'given #find_by_month_and_year is called' do
+        context 'when there are matching records in the database' do
+            let(:work_log) { WorkLog.new('1', Date.today, 'description') }
+
+            it 'returns the records in a list' do
+                allow(dao_double).to receive(:find_by_month_and_year).with('20','2020').and_return([work_log])
+
+                expect(subject.find_by_month_and_year('20', '2020')).to eq([work_log])
+            end
+        end
+
+        context 'when there are no matching records in the database' do
+            let(:work_log) { WorkLog.new('1', Date.today, 'description') }
+
+            it 'returns an empty list' do
+                allow(dao_double).to receive(:find_by_month_and_year).with('20','2020').and_return([])
+
+                expect(subject.find_by_month_and_year('20', '2020')).to eq([])
+            end
+        end
+    end
 end

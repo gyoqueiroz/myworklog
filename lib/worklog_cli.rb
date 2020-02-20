@@ -16,10 +16,34 @@ class WorkLogCli < Thor
         end
     end
 
-    desc 'list [DATE]', "prints work logs limited by DATE. Use 'today' or leave it empty for current day. Date format #{DATE_FORMAT}"
+    desc 'list', "Prints work logs for the current date. Date format #{DATE_FORMAT}"
+    long_desc <<-LONGDESC
+        Prints work logs for the current date if no option specified.
+        
+        Availble options:
 
+          With -m option, prints all the work logs for the specified month, assumes the current year
+
+          With -m and -y options, prints all the work logs for the specified month and year
+
+          Usage examples:
+
+            myworklog -m 2           Will list all the work logs logged in Februrary of the current year
+
+            myworklog -m 2 -y 2019   Will list all the work logs logged in Februrary of 2019
+    LONGDESC
+    options :m => :string
+    options :y => :string
     def list(date='')
-        print(WorkLogController.new.list(date))
+        if options[:m] && options[:y]
+            print(WorkLogController.new.find_by_month_and_year(options[:m], options[:y]))
+        elsif options[:m] && options[:y] == nil
+            print(WorkLogController.new.find_by_month_and_year(options[:m], Date.today.year.to_s))
+        # elsif options[:m] == nil && options[:y]
+        #     print(WorkLogController.new.list_by_year(options[:y]))
+        else
+            print(WorkLogController.new.list(date))
+        end
     end
 
     desc 'list_all', "prints all the work logs"

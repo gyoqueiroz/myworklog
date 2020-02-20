@@ -39,4 +39,14 @@ class WorkLogFileDao
             store.delete(id) 
         end
     end
+
+    def find_by_month_and_year(month, year)
+        store = PStore.new(FULL_DB_FILE_PATH)
+        list = []
+        store.transaction(true) do 
+          store.roots
+            .map { |root| list << store[root] if store[root].date.month == month.to_i && store[root].date.year == year.to_i }
+        end
+        list
+    end
 end

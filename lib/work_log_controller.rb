@@ -21,6 +21,10 @@ class WorkLogController
         WorkLogFileDao.new.delete(id)
     end
 
+    def find_by_month_and_year(month, year)
+        WorkLogFileDao.new.find_by_month_and_year(month, year)
+    end
+
     private 
 
     def create_work_log(date, description)
