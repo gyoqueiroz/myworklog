@@ -104,13 +104,13 @@ describe WorkLogFileDao do
         
         context 'when there are records in the database matching the criteria' do
             it 'returns a list of records' do
-                expect(subject.find_by_month_and_year('02', '2020')).to eq([work_log_1, work_log_2])
+                expect(subject.find_by_month_and_year(2, 2020)).to eq([work_log_1, work_log_2])
             end
         end
 
         context 'when there are no records matching the criteria' do
             it 'returns an empty list' do
-                expect(subject.find_by_month_and_year('12', '1900')).to eq([])
+                expect(subject.find_by_month_and_year(12, 1900)).to eq([])
             end
         end
     end
@@ -122,13 +122,13 @@ describe WorkLogFileDao do
         
         context 'when there are records in the database matching the criteria' do
             it 'returns a list of records' do
-                expect(subject.find_by_year('2020')).to eq([work_log_1, work_log_2])
+                expect(subject.find_by_year(2020)).to eq([work_log_1, work_log_2])
             end
         end
 
         context 'when there are no records matching the criteria' do
             it 'returns an empty list' do
-                expect(subject.find_by_year('1900')).to eq([])
+                expect(subject.find_by_year(1900)).to eq([])
             end
         end
     end

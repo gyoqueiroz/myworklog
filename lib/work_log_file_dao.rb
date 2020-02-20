@@ -45,7 +45,7 @@ class WorkLogFileDao
         list = []
         store.transaction(true) do 
           store.roots
-            .map { |root| list << store[root] if store[root].date.month == month.to_i && store[root].date.year == year.to_i }
+            .map { |root| list << store[root] if store[root].date.month == month && store[root].date.year == year }
         end
         list
     end
@@ -55,7 +55,7 @@ class WorkLogFileDao
         list = []
         store.transaction(true) do 
           store.roots
-            .map { |root| list << store[root] if store[root].date.year == year.to_i }
+            .map { |root| list << store[root] if store[root].date.year == year }
         end
         list
     end
