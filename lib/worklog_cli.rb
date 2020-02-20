@@ -8,7 +8,11 @@ class WorkLogCli < Thor
     desc 'add [DATE] [DESCRIPTION]', "adds a new work log. Use 'today' as DATE for current date or 'yesterday'. Date format #{DATE_FORMAT}"
 
     def add(date, description)
-        WorkLogController.new.add_work_log(date, description)
+        begin
+            WorkLogController.new.add_work_log(date, description)
+        rescue ArgumentError => msg
+            puts msg
+        end
     end
 
     desc 'list [DATE]', "prints work logs limited by DATE. Use 'today' or leave it empty for current day. Date format #{DATE_FORMAT}"

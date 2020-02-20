@@ -42,6 +42,12 @@ describe WorkLogController do
                 expect(work_log_provided.description).to eq(description)
             end
         end
+
+        context 'with invalid date' do
+            it 'raises an exception' do
+                expect{ subject.add_work_log('40/20/1600', 'description') }.to raise_exception(ArgumentError, 'invalid date')
+            end
+        end
     end
 
     context 'given #list is called' do
