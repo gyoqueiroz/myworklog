@@ -49,4 +49,14 @@ class WorkLogFileDao
         end
         list
     end
+
+    def find_by_year(year)
+        store = PStore.new(FULL_DB_FILE_PATH)
+        list = []
+        store.transaction(true) do 
+          store.roots
+            .map { |root| list << store[root] if store[root].date.year == year.to_i }
+        end
+        list
+    end
 end

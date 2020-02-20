@@ -114,4 +114,22 @@ describe WorkLogFileDao do
             end
         end
     end
+
+    context 'given #find_by_year is called' do
+        before do
+            allow(pstore_double).to receive(:transaction).with(true).and_yield
+        end
+        
+        context 'when there are records in the database matching the criteria' do
+            it 'returns a list of records' do
+                expect(subject.find_by_year('2020')).to eq([work_log_1, work_log_2])
+            end
+        end
+
+        context 'when there are no records matching the criteria' do
+            it 'returns an empty list' do
+                expect(subject.find_by_year('1900')).to eq([])
+            end
+        end
+    end
 end

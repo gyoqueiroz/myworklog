@@ -26,11 +26,16 @@ class WorkLogCli < Thor
 
           With -m and -y options, prints all the work logs for the specified month and year
 
+          With -y option, prints all the work logs for the specified year
+
           Usage examples:
 
-            myworklog -m 2           Will list all the work logs logged in Februrary of the current year
+            `myworklog -m 2`           Will print all the work logs logged in Februrary of the current year
 
-            myworklog -m 2 -y 2019   Will list all the work logs logged in Februrary of 2019
+            `myworklog -m 2 -y 2019`   Will print all the work logs logged in Februrary of 2019
+
+            `myworklog -y 2020`        Will print all the work logs logged in 2020
+
     LONGDESC
     options :m => :string
     options :y => :string
@@ -39,8 +44,8 @@ class WorkLogCli < Thor
             print(WorkLogController.new.find_by_month_and_year(options[:m], options[:y]))
         elsif options[:m] && options[:y] == nil
             print(WorkLogController.new.find_by_month_and_year(options[:m], Date.today.year.to_s))
-        # elsif options[:m] == nil && options[:y]
-        #     print(WorkLogController.new.list_by_year(options[:y]))
+        elsif options[:m] == nil && options[:y]
+            print(WorkLogController.new.find_by_year(options[:y]))
         else
             print(WorkLogController.new.list(date))
         end

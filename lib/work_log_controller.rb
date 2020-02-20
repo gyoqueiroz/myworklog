@@ -25,6 +25,10 @@ class WorkLogController
         WorkLogFileDao.new.find_by_month_and_year(month, year)
     end
 
+    def find_by_year(year)
+        WorkLogFileDao.new.find_by_year(year)
+    end
+
     private 
 
     def create_work_log(date, description)
