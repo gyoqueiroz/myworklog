@@ -23,7 +23,7 @@ describe WorkLogFileDao do
             .and_return(work_log_2)
     end
 
-    context 'given save is called with a valid work log' do
+    context 'given #save is called with a valid work log' do
         let(:work_log) { WorkLog.new('id', Date.today, 'description') }
 
         before do
@@ -36,7 +36,7 @@ describe WorkLogFileDao do
         end
     end
 
-    context 'given list is called' do
+    context 'given #list is called' do
         before do
             allow(pstore_double).to receive(:transaction).with(true).and_yield
         end
@@ -50,7 +50,7 @@ describe WorkLogFileDao do
         end
     end
 
-    context 'given list_all is called' do
+    context 'given #list_all is called' do
         before do
             allow(pstore_double).to receive(:transaction).with(true).and_yield
         end
@@ -72,15 +72,27 @@ describe WorkLogFileDao do
         end
     end
 
-    context 'given delete is called' do
+    context 'given #delete is called' do
+        let(:work_log) { WorkLog.new('id', Date.today, 'description') }
+
         before do
-            allow(pstore_double).to receive(:delete).with('id')
             allow(pstore_double).to receive(:transaction).and_yield(pstore_double)
         end
+        
+        context 'when the ID exists' do
+            it 'should call PStore.delete' do
+                allow(pstore_double).to receive(:delete).with('id')
+                allow(pstore_double).to receive(:[]).with('id').and_return(work_log)
 
-        context 'when the given ID exists' do
-            it 'should call PStore.delete for the given ID' do
                 subject.delete('id')
+            end
+        end
+
+        context 'when the ID does not exist' do
+            it 'raises an exception' do
+                allow(pstore_double).to receive(:[]).with('id').and_return(nil)
+
+                expect{ subject.delete('id') }.to raise_exception(Exception, 'Id id not found')
             end
         end
     end

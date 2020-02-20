@@ -26,8 +26,12 @@ class WorkLogCli < Thor
     desc 'delete [ID]', 'Deletes the work log by ID. Use list command before to retrieve the ID'
 
     def delete(id)
-        WorkLogController.new.delete(id)
-        p "Work log with #{id} ID has been deleted!"
+        begin
+            WorkLogController.new.delete(id)
+            puts "Work log with #{id} ID has been deleted!"
+        rescue Exception => msg
+            puts msg
+        end
     end
 
     private

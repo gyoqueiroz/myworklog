@@ -1,0 +1,1 @@
+gem push myworklog-1.0.0.gem

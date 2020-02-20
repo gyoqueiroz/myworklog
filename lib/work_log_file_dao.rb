@@ -29,14 +29,14 @@ class WorkLogFileDao
     def list_all
         store = PStore.new(FULL_DB_FILE_PATH)
         list = []
-        store.transaction(true) do 
-          store.roots
-            .map { |root| list << store[root] }
-        end
+        store.transaction(true) { store.roots.map { |root| list << store[root] } }
         list
     end
 
     def delete(id)
-        PStore.new(FULL_DB_FILE_PATH).transaction { |store| store.delete(id) }
+        PStore.new(FULL_DB_FILE_PATH).transaction do |store|
+            raise Exception.new("Id #{id} not found") if store[id] == nil
+            store.delete(id) 
+        end
     end
 end

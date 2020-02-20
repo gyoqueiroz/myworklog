@@ -3,7 +3,7 @@ require 'Date'
 
 describe WorkLog do
     
-    describe 'initialize' do
+    describe '#initialize' do
         context 'given all the attributes are passed' do
             let(:work_log) { WorkLog.new('id', Date.today, 'description') }
 

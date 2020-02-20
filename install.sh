@@ -1,0 +1,1 @@
+./build.sh && sudo gem install ./myworklog-1.0.0.gem
