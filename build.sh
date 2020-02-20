@@ -1,1 +1,1 @@
-gem build myworklog.gemspec
+rm myworklog-*.gem && gem build myworklog.gemspec
