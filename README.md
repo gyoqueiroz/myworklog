@@ -23,13 +23,13 @@ Please notice that the PStore database is created in your home folder, under `.m
 Using
 -----
 
-- Logging work
+#### Logging work
 
 `myworklog add "I worked hard today"` (This will create a work log for the current date)
 
 `myworklog add -d 10/10/2010 "Submitted PR to fix an issue"` (This will create a work log for the specified date)
 
-- Searching for logged work
+#### Searching for logged work
 
 `myworkglog list` (Prints all the work logs for the current date)
 
@@ -43,7 +43,7 @@ Using
 
 `myworklog list_all` (Prints all the work logs contained in the database)
 
-- Deleting logged work
+#### Deleting logged work
 
 `myworklog delete ID` (The ID is UUID auto-generated value and can be found when you run the `list` command)
 
