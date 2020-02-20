@@ -8,6 +8,6 @@ class WorkLog
     end
 
     def to_s
-        "#{@date.strftime('%m/%d/%Y')} - #{@description}"
+        "#{@date.strftime('%d/%m/%Y')} - #{@description}"
     end
 end

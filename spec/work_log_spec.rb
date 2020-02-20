@@ -14,7 +14,7 @@ describe WorkLog do
             end
 
             it 'prints out date in the correct format and description, both as string representation' do
-                expect("#{Date.today.strftime('%m/%d/%Y')} - description").to eq("#{work_log}")
+                expect("#{Date.today.strftime('%d/%m/%Y')} - description").to eq("#{work_log}")
             end
         end
     end
