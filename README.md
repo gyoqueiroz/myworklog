@@ -43,6 +43,15 @@ Using
 
 `myworklog list_all` (Prints all the work logs contained in the database)
 
+
+** The resulting output of the list command :**.
+
+`$ myworklog list -y 2015
+
+22cf704c-9b03-4f1d-a61d-29a4a52c66f4 | 10/01/2015 - First PR
+7b44fa0b-e5e7-4c54-9efe-08fbb432948c | 10/01/2015 - Onboarding tasks
+e5a36840-ba44-4bc3-943f-84f92e6dc6cf | 10/02/2015 - Presented POC`
+
 #### Deleting logged work
 
 `myworklog delete ID` (The ID is UUID auto-generated value and can be found when you run the `list` command)
