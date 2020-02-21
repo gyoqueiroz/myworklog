@@ -44,7 +44,7 @@ Using
 `myworklog list_all` (Prints all the work logs contained in the database)
 
 
-** The resulting output of the list command :**.
+** The resulting output of the list command :**
 
     $ myworklog list -y 2015
 
