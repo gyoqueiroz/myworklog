@@ -31,17 +31,14 @@ Using
 
 #### Searching for logged work
 
-`myworkglog list` (Prints all the work logs for the current date)
-
-`myworklog list yesterday` (Prints all the work logs for the previous day)
-
-`myworklog list -m 2` (Prints all the work logs for Februrary)
-
-`myworklog list -m 2 -y 2020` (Prints all the work logs for Februrary on 2020)
-
-`myworklog list -y 2020` (Prints all the work logs for 2020)
-
-`myworklog list_all` (Prints all the work logs contained in the database)
+| cmd  | description   |
+|------|---------------|
+| `myworkglog list` | (Prints all the work logs for the previous day) |
+| `myworklog list yesterday` | (Prints all the work logs for the previous day) |
+| `myworklog list -m 2` | (Prints all the work logs for Februrary) |
+| `myworklog list -m 2 -y 2020` | (Prints all the work logs for Februrary on 2020) |
+| `myworklog list -y 2020` | (Prints all the work logs for 2020) |
+| `myworklog list_all` | (Prints all the work logs contained in the database) |
 
 
 **The resulting output of the list command :**
