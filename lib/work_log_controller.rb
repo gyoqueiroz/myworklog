@@ -7,6 +7,10 @@ require_relative 'work_log'
 
 class WorkLogController
   def add_work_log(date, description)
+    if description.nil? || description.empty?
+      raise ArgumentError, 'Description must not be empty'
+    end
+
     WorkLogFileDao.new.save(create_work_log(date, description))
   end
 

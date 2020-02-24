@@ -37,6 +37,13 @@ describe WorkLogController do
       end
     end
 
+    context 'when invalid parameters are passed' do
+      it 'raises an error for empty description' do
+        expect { subject.add_work_log('today', '') }
+          .to raise_exception(ArgumentError, 'Description must not be empty')
+      end
+    end
+
     def verify_work_log_attributes(id, date, description)
       expect(dao_double).to receive(:save) do |work_log_provided|
         expect(work_log_provided.id).to eq(id)
