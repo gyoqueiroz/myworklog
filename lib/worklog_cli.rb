@@ -1,10 +1,13 @@
 require 'thor'
 require 'date'
+require 'rubygems'
 require_relative 'work_log_controller'
 
 DATE_FORMAT = 'DD/MM/YYYY'
 
 class WorkLogCli < Thor
+    map %w[--version -v] => :__print_version
+
     desc 'add [DESCRIPTION]', "Adds a new work log with today's date as default. Use -d flag to specify a different date (e.g. myworklog add -d 10/10/2010 'I worked'). Date format #{DATE_FORMAT}"
     options :d => :string
     def add(description)
@@ -66,6 +69,13 @@ class WorkLogCli < Thor
         rescue Exception => msg
             puts msg
         end
+    end
+
+    desc '--version -v', 'Prints the current version'
+    
+    def __print_version
+        spec = Gem::Specification::load("myworklog.gemspec")
+        puts spec.version
     end
 
     private
