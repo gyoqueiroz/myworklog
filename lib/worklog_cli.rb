@@ -44,11 +44,11 @@ class WorkLogCli < Thor
   options y: :numeric
   def list(date = '')
     if options[:m] && options[:y]
-      print(WorkLogController.new.find_by_month_and_year(options[:m], options[:y]))
+      list_by_month_and_year(options[:m], options[:y])
     elsif options[:m] && options[:y].nil?
-      print(WorkLogController.new.find_by_month_and_year(options[:m], Date.today.year))
+      list_by_month(options[:m])
     elsif options[:m].nil? && options[:y]
-      print(WorkLogController.new.find_by_year(options[:y]))
+      list_by_year(options[:y])
     else
       print(WorkLogController.new.list(date))
     end
@@ -77,6 +77,18 @@ class WorkLogCli < Thor
   end
 
   private
+
+  def list_by_year(year)
+    print(WorkLogController.new.find_by_year(year))
+  end
+
+  def list_by_month(month)
+    print(WorkLogController.new.find_by_month_and_year(month, Date.today.year))
+  end
+
+  def list_by_month_and_year(month, year)
+    print(WorkLogController.new.find_by_month_and_year(month, year))
+  end
 
   def print(work_log_list)
     puts ''
