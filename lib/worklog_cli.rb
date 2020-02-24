@@ -65,7 +65,7 @@ class WorkLogCli < Thor
   def delete(id)
     WorkLogController.new.delete(id)
     puts "Work log with #{id} ID has been deleted!"
-  rescue Exception => e
+  rescue ArgumentError => e
     puts e
   end
 

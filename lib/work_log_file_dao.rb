@@ -39,7 +39,7 @@ class WorkLogFileDao
 
   def delete(id)
     PStore.new(FULL_DB_FILE_PATH).transaction do |store|
-      raise Exception, "Id #{id} not found" if store[id].nil?
+      raise ArgumentError, "Id #{id} not found" if store[id].nil?
 
       store.delete(id)
     end
