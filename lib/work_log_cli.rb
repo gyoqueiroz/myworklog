@@ -3,7 +3,8 @@
 require 'thor'
 require 'date'
 require 'rubygems'
-require_relative 'work_log_controller'
+require 'work_log_controller'
+require 'list_strategy'
 
 DATE_FORMAT = 'DD/MM/YYYY'
 
@@ -47,15 +48,7 @@ class WorkLogCli < Thor
   options m: :numeric
   options y: :numeric
   def list(date = '')
-    if options[:m] && options[:y]
-      list_by_month_and_year(options[:m], options[:y])
-    elsif options[:m] && options[:y].nil?
-      list_by_month(options[:m])
-    elsif options[:m].nil? && options[:y]
-      list_by_year(options[:y])
-    else
-      print(WorkLogController.new.list(date))
-    end
+    print(ListStrategy.new(date, options[:m], options[:y]).execute)
   end
 
   desc 'list_all', 'prints all the work logs'
