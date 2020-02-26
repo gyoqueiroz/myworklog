@@ -22,22 +22,18 @@ class ListStrategy
   private
 
   def list_by_date
-    puts 'list by date'
     WorkLogController.new.list(@date)
   end
 
   def list_by_month_and_year
-    puts 'list by month and year'
     WorkLogController.new.find_by_month_and_year(@month, @year)
   end
 
   def list_by_month_current_year
-    puts 'list by month'
     WorkLogController.new.find_by_month_and_year(@month, Date.today.year)
   end
 
   def list_by_year
-    puts 'list by year'
     WorkLogController.new.find_by_year(@year)
   end
 end
