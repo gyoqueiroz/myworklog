@@ -35,6 +35,8 @@ class WorkLogCli < Thor
 
           With -y option, prints all the work logs for the specified year
 
+          With --all option, prints all the work logs from the database
+
           Usage examples:
 
             `myworklog 10/10/2019`     Will print all the work logs for the given date
@@ -45,17 +47,16 @@ class WorkLogCli < Thor
 
             `myworklog -y 2020`        Will print all the work logs logged in 2020
 
+            `myworklog --all`
+
   LONGDESC
   options m: :numeric
   options y: :numeric
+  options all: :string
   def list(date = '')
+    return print(WorkLogController.new.list_all) if options[:all]
+
     print(ListStrategy.new(date, options[:m], options[:y]).execute)
-  end
-
-  desc 'list_all', 'prints all the work logs'
-
-  def list_all
-    print(WorkLogController.new.list_all)
   end
 
   desc 'delete [ID]', 'Deletes the work log by ID. You can use the `list` command to retrieve the ID'
