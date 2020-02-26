@@ -15,11 +15,11 @@ class WorkLogController
   end
 
   def list(date)
-    WorkLogFileDao.new.list(parse_date(date))
+    sort_by_date(WorkLogFileDao.new.list(parse_date(date)))
   end
 
   def list_all
-    WorkLogFileDao.new.list_all
+    sort_by_date(WorkLogFileDao.new.list_all)
   end
 
   def delete(id)
@@ -27,11 +27,11 @@ class WorkLogController
   end
 
   def find_by_month_and_year(month, year)
-    WorkLogFileDao.new.find_by_month_and_year(month, year)
+    sort_by_date(WorkLogFileDao.new.find_by_month_and_year(month, year))
   end
 
   def find_by_year(year)
-    WorkLogFileDao.new.find_by_year(year)
+    sort_by_date(WorkLogFileDao.new.find_by_year(year))
   end
 
   private

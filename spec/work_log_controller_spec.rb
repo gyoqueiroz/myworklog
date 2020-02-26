@@ -93,8 +93,8 @@ describe WorkLogController do
 
   context 'given #list_all is called' do
     context 'when there is data in the database' do
-      let(:work_log_1) { WorkLog.new('1', Date.today, 'description') }
-      let(:work_log_2) { WorkLog.new('2', Date.today.prev_day, 'description') }
+      let(:work_log_1) { WorkLog.new('1', Date.today.prev_day, 'description') }
+      let(:work_log_2) { WorkLog.new('2', Date.today, 'description') }
       let(:all_records) { [work_log_1, work_log_2] }
 
       before do
