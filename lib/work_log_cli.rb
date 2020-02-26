@@ -25,6 +25,8 @@ class WorkLogCli < Thor
 
         Availble options:
 
+          with [DATE], prints the work logged for the given date in DD/MM/YYYY
+
           With -m option, prints all the work logs for the specified month, assumes the current year
 
           With -m and -y options, prints all the work logs for the specified month and year
@@ -33,7 +35,9 @@ class WorkLogCli < Thor
 
           Usage examples:
 
-            `myworklog -m 2`           Will print all the work logs logged in Februrary of the current year
+            `myworklog 10/10/2019`     Will print all the work logs for the given date
+
+            `myworklog -m 2`           Will print all the work logs loggedi n Februrary of the current year
 
             `myworklog -m 2 -y 2019`   Will print all the work logs logged in Februrary of 2019
 
