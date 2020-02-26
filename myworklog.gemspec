@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'myworklog'
-  s.version   = '1.1.1'
+  s.version   = '1.1.5'
   s.platform  = Gem::Platform::RUBY
   s.summary   = 'My Work Log'
   s.description = 'Log your work from cmd and keep track of what you have done... just in case your boss ask'

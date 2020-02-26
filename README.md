@@ -39,7 +39,7 @@ Using
 | `myworklog list -m 2` | (Prints all the work logs for Februrary) |
 | `myworklog list -m 2 -y 2020` | (Prints all the work logs for Februrary on 2020) |
 | `myworklog list -y 2020` | (Prints all the work logs for 2020) |
-| `myworklog list_all` | (Prints all the work logs contained in the database) |
+| `myworklog list --all` | (Prints all the work logs from the database) |
 
 
 **The resulting output of the list command :**
