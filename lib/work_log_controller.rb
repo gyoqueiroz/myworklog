@@ -49,4 +49,8 @@ class WorkLogController
       Date.strptime(date, '%d/%m/%Y')
     end
   end
+
+  def sort_by_date(work_log_list)
+    work_log_list.sort_by(&:date)
+  end
 end
